@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+    <bean id="client" class="com.neu.client.Client">
+        <constructor-arg ref="addComputor"/>
+    </bean>
+
+    <bean id="addComputor" class="com.neu.computor.impl.Add"/>
+    <bean id="subComputor" class="com.neu.computor.impl.Sub"/>
+
+    <bean id="addAspect" class="com.neu.aspect.ComputeAspect"/>
+
+    <aop:config>
+        <aop:aspect ref="addAspect">
+            <aop:pointcut id="addPoint" expression="execution(* com.neu.computor.impl.Add.compute(..))"/>
+            <aop:before method="beforeCompute" pointcut-ref="addPoint"/>
+            <aop:after method="afterCompute" pointcut-ref="addPoint"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
