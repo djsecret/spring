@@ -1,0 +1,7 @@
+com/neu/annotation/IoC/JugglerTest.class
+com/neu/annotation/action/LoginActionTest.class
+com/neu/aop/thinker/impl/ThinkerImplTest.class
+com/neu/client/ClientTest.class
+com/neu/aop/performer/impl/TomTest.class
+com/neu/IoC/StageTest.class
+com/neu/IoC/performer/impl/CollectionImplTest.class
